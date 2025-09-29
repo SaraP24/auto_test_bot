@@ -1,0 +1,31 @@
+{
+  "name": "auto_test_bot",
+  "version": "1.0.0",
+  "description": "Diseñar un framework de automatización de pruebas end-to-end con Playwright + TypeScript, que integre capacidades de self-healing, machine learning para detección de patrones de fallos, y generación de reportes inteligentes. El bot usará Python para el backend de IA.",
+  "keywords": [],
+  "homepage": "https://github.com/SaraP24/auto_test_bot#readme",
+  "bugs": {
+    "url": "https://github.com/SaraP24/auto_test_bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaraP24/auto_test_bot.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {},
+  "dependencies": {
+    "playwright": "^1.55.1",
+    "playwright-core": "^1.55.1",
+    "undici-types": "^7.12.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.5.2"
+  }
+}
