@@ -1,28 +1,17 @@
+import { Locator } from "playwright-core";
 import { BasePage } from "./BasePage";
 
 export class LoginPage extends BasePage {
-    readonly usernameInput = 'input[name="username"]';
-    readonly passwordInput = 'input[name="password"]';
-    readonly submitButton = 'button[type="submit"]';
-    readonly welcomeMessage = '.welcome-message';
-    readonly errorMessage = '.error-message';     
- 
-    
-    async navigate() {
-        await this.page.goto('https://example.com/login');
-    }
+    readonly usernameInput = this.page.getByPlaceholder('Username');
+    readonly passwordInput = this.page.getByPlaceholder('Password');
+    readonly submitButton = this.page.locator('.orangehrm-login-button');
+
+    readonly errorMessage = this.page.locator('.error-message');
+    readonly dashboardHeader = this.page.locator('.orangehrm-dashboard-widget-header111');
 
     async login(username: string, password: string) {
-        await this.page.fill(this.usernameInput, username);
-        await this.page.fill(this.passwordInput, password);
-        await this.page.click(this.submitButton);
-    }   
-
-    async getWelcomeMessage() {
-        return this.page.textContent(this.welcomeMessage);
+        await this.fill(this.usernameInput, username);
+        await this.fill(this.passwordInput, password);
+        await this.click(this.submitButton);
     }
-
-    async getErrorMessage() {
-        return this.page.textContent(this.errorMessage);
-    }   
 }

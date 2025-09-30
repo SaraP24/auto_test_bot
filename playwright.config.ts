@@ -3,19 +3,20 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 3 : 2,
-  reporter: 'html',
+  retries: 0,
+  workers: 2,
+  reporter: [
+  ['list'],
+  ['html', { outputFolder: 'reports/html' }],
+  ['json', { outputFile: 'reports/report.json' }], 
+  ['junit', { outputFile: 'reports/junit.xml' }],
+],
+  outputDir: 'report/',
   use: {
-    baseURL: '',
+    baseURL: "https://opensource-demo.orangehrmlive.com/",
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    actionTimeout: 0,
-    navigationTimeout: 30000,
-    launchOptions: {
-      slowMo: 100,
-    },
   },
 
   projects: [

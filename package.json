@@ -13,12 +13,22 @@
   },
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "directories": {
     "test": "tests"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "codegen": "npx playwright codegen",
+    "report": "npx playwright show-report",
+    "test:trace": "npx playwright test --trace on",
+    "test:grep": "npx playwright test --grep @smoke",
+    "test:grep-invert": "npx playwright test --grep-invert @smoke",
+    "lint": "eslint . --ext .ts"
+  },
   "dependencies": {
     "playwright": "^1.55.1",
     "playwright-core": "^1.55.1",

@@ -4,3 +4,8 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 .env
+*.png
+*.jpg
+*.jpeg
+/__pycache__/
+report/

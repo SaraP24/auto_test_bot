@@ -1,0 +1,175 @@
+<testsuites id="" name="" tests="7" failures="5" skipped="0" errors="0" time="47.26019799999986">
+<testsuite name="dashboard.spec.ts" timestamp="2025-09-30T22:07:14.840Z" hostname="chromium" tests="5" failures="5" skipped="0" time="42.01" errors="0">
+<testcase name="dashboard test 1" classname="dashboard.spec.ts" time="26.739">
+<failure message="dashboard.spec.ts:8:1 dashboard test 1" type="FAILURE">
+<![CDATA[  [chromium] › dashboard.spec.ts:8:1 › dashboard test 1 ────────────────────────────────────────────
+
+    Error: Test error to check bot assistance
+
+      12 |     await loginPage.isElementVisible(loginPage.dashboardHeader);
+      13 |
+    > 14 |     throw new Error('Test error to check bot assistance');
+         |           ^
+      15 | });
+      16 |
+      17 | test('dashboard test 2', async ({ page }) => {
+        at C:\Users\spere\auto_test_bot\tests\dashboard.spec.ts:14:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\report\dashboard-dashboard-test-1-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\report\dashboard-dashboard-test-1-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\report\dashboard-dashboard-test-1-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[LOG] Starting dashboard tests, expecting errors for bot assistance demo
+
+[[ATTACHMENT|..\report\dashboard-dashboard-test-1-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|..\report\dashboard-dashboard-test-1-chromium\video.webm]]
+
+[[ATTACHMENT|..\report\dashboard-dashboard-test-1-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="dashboard test 2" classname="dashboard.spec.ts" time="8.648">
+<failure message="dashboard.spec.ts:17:1 dashboard test 2" type="FAILURE">
+<![CDATA[  [chromium] › dashboard.spec.ts:17:1 › dashboard test 2 ───────────────────────────────────────────
+
+    Error: Test error to check bot assistance
+
+      16 |
+      17 | test('dashboard test 2', async ({ page }) => {
+    > 18 |     throw new Error('Test error to check bot assistance');
+         |           ^
+      19 | });
+      20 |
+      21 | test('dasboard test 3', async ({ page }) => {
+        at C:\Users\spere\auto_test_bot\tests\dashboard.spec.ts:18:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\report\dashboard-dashboard-test-2-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\report\dashboard-dashboard-test-2-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\report\dashboard-dashboard-test-2-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|..\report\dashboard-dashboard-test-2-chromium\video.webm]]
+]]>
+</system-out>
+</testcase>
+<testcase name="dasboard test 3" classname="dashboard.spec.ts" time="2.267">
+<failure message="dashboard.spec.ts:21:1 dasboard test 3" type="FAILURE">
+<![CDATA[  [chromium] › dashboard.spec.ts:21:1 › dasboard test 3 ────────────────────────────────────────────
+
+    Error: Test error to check bot assistance
+
+      20 |
+      21 | test('dasboard test 3', async ({ page }) => {
+    > 22 |     throw new Error('Test error to check bot assistance');
+         |           ^
+      23 | });
+      24 |
+      25 | test('dashboard test 4', async ({ page }) => {
+        at C:\Users\spere\auto_test_bot\tests\dashboard.spec.ts:22:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\report\dashboard-dasboard-test-3-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\report\dashboard-dasboard-test-3-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\report\dashboard-dasboard-test-3-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|..\report\dashboard-dasboard-test-3-chromium\video.webm]]
+]]>
+</system-out>
+</testcase>
+<testcase name="dashboard test 4" classname="dashboard.spec.ts" time="2.142">
+<failure message="dashboard.spec.ts:25:1 dashboard test 4" type="FAILURE">
+<![CDATA[  [chromium] › dashboard.spec.ts:25:1 › dashboard test 4 ───────────────────────────────────────────
+
+    Error: Test error to check bot assistance
+
+      24 |
+      25 | test('dashboard test 4', async ({ page }) => {
+    > 26 |     throw new Error('Test error to check bot assistance');
+         |           ^
+      27 | });
+      28 |
+      29 | test('dashboard test 5', async ({ page }) => {
+        at C:\Users\spere\auto_test_bot\tests\dashboard.spec.ts:26:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\report\dashboard-dashboard-test-4-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\report\dashboard-dashboard-test-4-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\report\dashboard-dashboard-test-4-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|..\report\dashboard-dashboard-test-4-chromium\video.webm]]
+]]>
+</system-out>
+</testcase>
+<testcase name="dashboard test 5" classname="dashboard.spec.ts" time="2.214">
+<failure message="dashboard.spec.ts:29:1 dashboard test 5" type="FAILURE">
+<![CDATA[  [chromium] › dashboard.spec.ts:29:1 › dashboard test 5 ───────────────────────────────────────────
+
+    Error: Test error to check bot assistance
+
+      28 |
+      29 | test('dashboard test 5', async ({ page }) => {
+    > 30 |     throw new Error('Test error to check bot assistance');
+         |           ^
+      31 | }); 
+      32 |
+      33 |
+        at C:\Users\spere\auto_test_bot\tests\dashboard.spec.ts:30:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\report\dashboard-dashboard-test-5-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\report\dashboard-dashboard-test-5-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\report\dashboard-dashboard-test-5-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|..\report\dashboard-dashboard-test-5-chromium\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="login.spec.ts" timestamp="2025-09-30T22:07:14.840Z" hostname="chromium" tests="2" failures="0" skipped="0" time="35.556" errors="0">
+<testcase name="Login tests › validate login" classname="login.spec.ts" time="17.897">
+</testcase>
+<testcase name="Login tests › validate login failure" classname="login.spec.ts" time="17.659">
+</testcase>
+</testsuite>
+</testsuites>

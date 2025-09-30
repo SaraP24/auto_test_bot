@@ -1,27 +1,21 @@
-import { test } from "@playwright/test";
+import { test } from "../fixtures/page-manager";
 
-test('validate login', async ({ page }) => {
-    await page.goto('https://example.com/login');
-    await page.fill('input[name="username"]', 'testuser');
-    await page.fill('input[name="password"]', 'password123');
-    await page.click('button[type="submit"]');
-    await page.waitForURL('https://example.com/dashboard');
+test.beforeEach(async ({ loginPage }) => {
+    await loginPage.navigateToUrl('/');
+});
 
-    await page.screenshot({ path: 'login-success.png' });
+test.describe('Login tests', () => {
+    test('validate login', async ({ loginPage }) => {
+        await loginPage.login('Admin', 'admin123'); //replace with storage state
+        await loginPage.isElementVisible(loginPage.dashboardHeader);
+        await loginPage.screenshot({ path: 'login-success.png' });
 
-    const welcomeMessage = await page.textContent('.welcome-message');
-    test.expect(welcomeMessage).toContain('Welcome, testuser');
-})
+    });
 
+    test('validate login failure', async ({ loginPage }) => {
+        await loginPage.login('Admin11', '123456');
 
-test('validate login failure', async ({ page }) => {
-    await page.goto('https://example.com/login');
-    await page.fill('input[name="username"]', 'wronguser');
-    await page.fill('input[name="password"]', 'wrongpassword');
-    await page.click('button[type="submit"]');
-    
-    const errorMessage = await page.textContent('.error-message');
-    test.expect(errorMessage).toBe('Invalid username or password.');
-
-    await page.screenshot({ path: 'login-failure.png' });
-})
+        await loginPage.isElementVisible(loginPage.errorMessage);
+        await loginPage.screenshot({ path: 'login-failure.png' });
+    });
+});

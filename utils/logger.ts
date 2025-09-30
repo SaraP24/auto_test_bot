@@ -1,5 +1,6 @@
+import { BasePage } from "../pages/BasePage";
 
-export class Logger {
+export class Logger extends BasePage {
     static log(message: string) {
         console.log(`[LOG] ${message}`);
     }
