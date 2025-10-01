@@ -12,7 +12,6 @@ export class HeaderPage extends BasePage {
     readonly cartLink: Locator = this.page.getByRole('link', { name: 'Cart' });
     readonly loginLink: Locator = this.page.getByRole('link', { name: 'Log in' });
     readonly signUpLink: Locator = this.page.getByRole('link', { name: 'Sign up' });
-    readonly welcomeUserText: Locator =  this.page.locator('a#nameofuser');
 
     readonly newMessageModal: NewMessageModal;
     readonly loginModal: LoginModal;
@@ -20,7 +19,7 @@ export class HeaderPage extends BasePage {
     constructor(page: Page) {
         super(page);
         this.newMessageModal = new NewMessageModal(page);
-        this.loginModal =  new LoginModal(page);
+        this.loginModal = new LoginModal(page);
     }
 
     async openContactForm(): Promise<void> {

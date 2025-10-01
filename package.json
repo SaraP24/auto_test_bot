@@ -29,9 +29,8 @@
     "test:grep-invert": "npx playwright test --grep-invert @smoke",
     "lint": "eslint . --ext .ts",
     "activate-venv": "venv\\Scripts\\activate",
-    "open-dashboard": "streamlit run ai/dashboard/app.py"
-
-
+    "open-dashboard": "streamlit run ai/dashboard/app.py",
+    "train-model": "python ai/train_model.py"
   },
   "dependencies": {
     "playwright": "^1.55.1",
