@@ -6,7 +6,7 @@ import { PurchaseConfirmationModal } from "./modals/PurchaseConfirmationModal"
 export class CartPage extends BasePage {
     readonly pageTitle: Locator = this.page.locator('h2').filter({ hasText: 'Products' });
     readonly cartTable: Locator = this.page.locator('#tbodyid')
-    readonly placeOrderButton: Locator = this.page.getByRole('button', { name: 'Place Order' });
+    readonly placeOrderButton: Locator = this.page.getByRole('button', { name: 'Place Order1' });
 
     readonly placeOrderModal: PlaceOrderModal;
     readonly purchaseConfirmationModal: PurchaseConfirmationModal;
