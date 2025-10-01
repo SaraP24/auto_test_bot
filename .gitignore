@@ -8,3 +8,5 @@ node_modules/
 *.jpg
 *.jpeg
 /__pycache__/
+/report/
+/reports/
