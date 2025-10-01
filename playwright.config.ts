@@ -9,11 +9,10 @@ export default defineConfig({
   ['list'],
   ['html', { outputFolder: 'reports/html' }],
   ['json', { outputFile: 'reports/report.json' }], 
-  ['junit', { outputFile: 'reports/junit.xml' }],
 ],
   outputDir: 'report/',
   use: {
-    baseURL: "https://opensource-demo.orangehrmlive.com/",
+    baseURL: "https://www.demoblaze.com/",
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
