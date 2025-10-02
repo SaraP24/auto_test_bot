@@ -17,6 +17,7 @@
 
 ### Para revisar dashboard
 npm run open-dashboard debe tirarse en terminal strimlit
+
 como se activa? 
 npm run activate-venv
 streamlit run ai/dashboard/app.py 
