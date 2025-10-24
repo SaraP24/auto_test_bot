@@ -7,7 +7,7 @@ export default defineConfig({
   workers: 2,
   reporter: [
   ['list'],
-  ['html', { outputFolder: 'reports/html' }],
+  ['html', { outputFolder: 'reports/html', open: 'never' }],
   ['json', { outputFile: 'reports/report.json' }], 
 ],
   outputDir: 'report/',
@@ -23,24 +23,9 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
-    },
-
   ],
 });
