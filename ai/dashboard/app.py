@@ -9,7 +9,7 @@ from ai.healing import report_analyzer as analyzer
 
 
 st.set_page_config(layout='wide')
-st.title("🧠 Self-Healing Dashboard")
+st.title("🧯 Self-Healing Test Dashboard 🧯")
 
 # Sidebar: controls
 st.sidebar.header("Report settings")
@@ -48,7 +48,7 @@ else:
     # Ask analyzer for detailed suggestions (including raw message and parsed location)
     suggestions = analyzer.analyze_report(report=parsed, dedupe=dedupe, return_details=True)
     if suggestions:
-        st.subheader("❌ Suggestions")
+        st.subheader("❌ Suggestions for Fixing Tests ")
         for item in suggestions:
             # support both legacy (title, error, fix) and new (title, error, fix, details)
             if len(item) == 4:
@@ -57,25 +57,43 @@ else:
                 title, error, fix = item
                 details = {}
 
-            with st.expander(f"{title} — {error}"):
-                st.write(f"Sugerencia: {fix}")
-                # show raw message if available
-                if details.get('message'):
-                    st.markdown(f"**Mensaje:** `{details.get('message')}`")
-                # show parsed location if available
-                if details.get('parsed_location'):
-                    pl = details.get('parsed_location')
-                    loc_parts = []
-                    if pl.get('file'):
-                        loc_parts.append(f"file: {pl.get('file')}")
-                    if pl.get('line'):
-                        loc_parts.append(f"line: {pl.get('line')}")
-                    if pl.get('col'):
-                        loc_parts.append(f"col: {pl.get('col')}")
-                    st.write('Parsed location: ' + ', '.join(loc_parts))
-                # show stack if present
-                if details.get('stack'):
-                    st.code(details.get('stack'))
+            with st.expander(f"{title} — {error}", expanded=False):
+                # Show trace-based suggestion (if analyzer produced one)
+                trace_sugg = details.get('trace_suggestion') if isinstance(details, dict) else None
+                if trace_sugg:
+                    st.markdown('**Suggestion (from trace):**')
+                    st.write(trace_sugg)
+
+                # Show only the stack trace per user preference. If none is available,
+                # display a short note so the UI doesn't look empty.
+                stack = details.get('stack') if isinstance(details, dict) else None
+                if stack:
+                    st.markdown('**Stack trace:**')
+                    st.code(stack, language='')
+
+                    # Show source snippet when available (file + surrounding lines)
+                    src = details.get('source_snippet') if isinstance(details, dict) else None
+                    if src:
+                        # Create a columns layout: file/line info on left, "Open in Editor" button on right
+                        col1, col2 = st.columns([0.7, 0.3])
+                        with col1:
+                            st.markdown(f"**Source:** `{src.get('file')}` (line {src.get('line')})")
+                        with col2:
+                            # Create VS Code URL: vscode://file/absolute/path:line
+                            file_path = src.get('file')
+                            if file_path:
+                                line = src.get('line', 1)
+                                vscode_url = f"vscode://file/{file_path}:{line}"
+                                st.link_button("🔍 Abrir en Editor", vscode_url)
+
+                        # pick language from extension for code highlighting
+                        ext = os.path.splitext(src.get('file'))[1].lower()
+                        lang_map = {'.ts': 'typescript', '.tsx': 'tsx', '.js': 'javascript', '.py': 'python', '.java': 'java'}
+                        lang = lang_map.get(ext, '')
+                        st.markdown('**Source snippet:**')
+                        st.code(src.get('snippet', ''), language=lang)
+                else:
+                    st.info('No stack trace available for this error.')
     else:
         st.success("✅ Critical errors not found!")
 

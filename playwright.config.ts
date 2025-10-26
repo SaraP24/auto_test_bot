@@ -13,7 +13,7 @@ export default defineConfig({
   outputDir: 'report/',
   use: {
     baseURL: "https://www.demoblaze.com/",
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
