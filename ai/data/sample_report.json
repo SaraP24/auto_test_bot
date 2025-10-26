@@ -1,0 +1,37 @@
+{
+  "suites": [
+    {
+      "title": "Example Suite",
+      "specs": [
+        {
+          "title": "001 - Example test - Validate login",
+          "tests": [
+            {
+              "results": [
+                {
+                  "errors": [
+                    { "message": "Test timeout: waiting for locator" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "002 - Example test - Broken selector",
+          "tests": [
+            {
+              "results": [
+                {
+                  "errors": [
+                    { "message": "strict mode violation: query selector failed" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

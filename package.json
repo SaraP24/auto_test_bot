@@ -28,7 +28,8 @@
     "test:grep": "npx playwright test --grep @smoke",
     "test:grep-invert": "npx playwright test --grep-invert @smoke",
     "lint": "eslint . --ext .ts",
-    "activate-venv": "source venv/bin/activate || venv\\Scripts\\activate",
+    "create-venv": "python -m venv venv",
+    "activate-venv": "venv\\Scripts\\activate",
     "open-dashboard": "streamlit run ai/dashboard/app.py",
     "train-model": "python ai/train_model.py"
   },
