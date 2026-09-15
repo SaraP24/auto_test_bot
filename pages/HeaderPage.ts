@@ -12,6 +12,8 @@ export class HeaderPage extends BasePage {
     readonly cartLink: Locator = this.page.getByRole('link', { name: 'Cart' });
     readonly loginLink: Locator = this.page.getByRole('link', { name: 'Log in' });
     readonly signUpLink: Locator = this.page.getByRole('link', { name: 'Sign up' });
+    readonly welcomeUserText: Locator = this.page.locator('#nameofuser');
+    readonly logoutLink: Locator = this.page.getByRole('link', { name: 'Log out' });
 
     readonly newMessageModal: NewMessageModal;
     readonly loginModal: LoginModal;
@@ -25,5 +27,19 @@ export class HeaderPage extends BasePage {
     async openContactForm(): Promise<void> {
         await this.click(this.contactLink);
         await this.waitForElementToBeVisible(this.newMessageModal.contactFormIdentifier);
+    }
+
+    async openSignUpForm(): Promise<void> {
+        await this.click(this.signUpLink);
+        await this.page.locator('#signInModal').waitFor({ state: 'visible' });
+    }
+
+    async signUp(username: string, password: string): Promise<string> {
+        await this.openSignUpForm();
+        await this.page.locator('#sign-username').fill(username);
+        await this.page.locator('#sign-password').fill(password);
+        await this.page.locator('#signInModal .btn-primary').click();
+        const message = await this.getDialogMessage();
+        return message;
     }
 }

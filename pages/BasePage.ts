@@ -14,7 +14,7 @@ export class BasePage {
     }
 
     async click(locator: Locator): Promise<void> {
-        await locator.click();
+        await locator.click({ force: true, timeout: DEFAULT_TIMEOUT });
     }
 
     async getElementCount(locator: Locator): Promise<number> {
@@ -49,8 +49,14 @@ export class BasePage {
 
     async getDialogMessage(): Promise<string> {
         return new Promise<string>((resolve) => {
-            this.page.once('dialog', (dialog) => {
-                resolve(dialog.message());
+            this.page.once('dialog', async (dialog) => {
+                const message = dialog.message();
+                try {
+                    await dialog.accept();
+                } catch {
+                    // Dialog may already be dismissed or not available to accept.
+                }
+                resolve(message);
             });
         });
     }

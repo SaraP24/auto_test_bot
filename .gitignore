@@ -11,3 +11,7 @@ venv
 /__pycache__/
 /report/
 /reports/
+.playwright
+.playwright-mcp
+.claude
+.vscode
