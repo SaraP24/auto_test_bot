@@ -129,3 +129,11 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Log Pages URL
+        run: |
+          owner="$(echo "${GITHUB_REPOSITORY_OWNER}" | tr '[:upper:]' '[:lower:]')"
+          repo="${GITHUB_REPOSITORY#*/}"
+          fallback_url="https://${owner}.github.io/${repo}/"
+          echo "GitHub Pages URL (deploy output): ${{ steps.deployment.outputs.page_url }}"
+          echo "GitHub Pages URL (fallback): ${fallback_url}"
