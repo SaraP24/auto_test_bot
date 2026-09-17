@@ -73,6 +73,21 @@ jobs:
       - name: Update README test status
         run: python ai/update_readme_test_status.py --report ci-artifacts/report.json --readme README.md
 
+      - name: Generate LLM test summary
+        run: |
+          export OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
+          python ai/generate_llm_test_summary.py --report ci-artifacts/report.json --readme README.md --markdown-out reports/llm-summary.md --json-out reports/llm-summary.json
+
+      - name: Upload LLM summary artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: llm-summary
+          path: |
+            reports/llm-summary.md
+            reports/llm-summary.json
+          if-no-files-found: warn
+
       - name: Upload README preview
         if: always()
         uses: actions/upload-artifact@v4

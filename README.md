@@ -110,6 +110,8 @@ También hay scripts npm que pueden ayudar (ver `package.json`):
 
 El workflow de GitHub Actions ejecuta Playwright en Ubuntu, publica `reports/html` como artefacto y actualiza este README a partir de `reports/report.json`.
 
+Si configuras el secret `OPENAI_API_KEY`, el job `ai-agent` también genera `reports/llm-summary.md` y `reports/llm-summary.json`, y agrega un bloque de resumen LLM a este README.
+
 <!-- TEST-STATUS:START -->
 ## CI Test Status
 
