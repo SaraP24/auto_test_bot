@@ -1,4 +1,4 @@
-import { BasePage } from "../pages/BasePage";
+import { BasePage } from "../pages/BasePage.ts";
 
 export class Logger extends BasePage {
     static log(message: string) {
