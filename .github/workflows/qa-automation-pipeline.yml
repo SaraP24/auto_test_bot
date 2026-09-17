@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -89,4 +91,4 @@ jobs:
             exit 0
           fi
           git commit -m "docs: update test status [skip ci]"
-          git push
+          git push origin HEAD:${GITHUB_REF_NAME}

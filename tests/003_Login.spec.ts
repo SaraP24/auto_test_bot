@@ -2,10 +2,10 @@ import { test } from '../fixtures/page-manager';
 import loginTestData from '../test_data/loginTestData';
 
 test.describe('DemoBlaze Tests - Login tests', () => {
-    test('003.1 - Validate valid login', async ({ homePage, headerPage, loginFlow, assertionsUI }) => {
+    test('003.1 - Validate valid login', async ({ homePage, loginFlow, assertionsUI }, testInfo) => {
         await test.step('Navigate to homepage and create a valid user', async () => {
             await homePage.navigateToHomePage('/');
-            const username = `autotest_${Date.now()}`;
+            const username = `autotest_${testInfo.project.name}_${Date.now()}_${testInfo.retry}`;
             const password = 'ValidPassword123';
 
             const signupMessage = await loginFlow.signUpCustomer({ username, password });
