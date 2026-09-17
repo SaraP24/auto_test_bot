@@ -71,7 +71,7 @@ jobs:
           path: ci-artifacts
 
       - name: Update README test status
-        run: python ai/update_readme_test_status.py --report ci-artifacts/reports/report.json --readme README.md
+        run: python ai/update_readme_test_status.py --report ci-artifacts/report.json --readme README.md
 
       - name: Upload README preview
         if: always()

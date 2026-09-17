@@ -10,8 +10,28 @@ START_MARKER = "<!-- TEST-STATUS:START -->"
 END_MARKER = "<!-- TEST-STATUS:END -->"
 
 
+def resolve_report_path(report_path: Path) -> Path:
+    if report_path.is_file():
+        return report_path
+
+    candidates = [
+        report_path,
+        report_path / "report.json",
+        report_path / "reports" / "report.json",
+        report_path.parent / "report.json",
+        report_path.parent / "reports" / "report.json",
+    ]
+
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate
+
+    raise FileNotFoundError(f"Could not find report.json near '{report_path}'")
+
+
 def load_report(report_path: Path) -> dict[str, Any]:
-    with report_path.open("r", encoding="utf-8") as file_handle:
+    resolved_path = resolve_report_path(report_path)
+    with resolved_path.open("r", encoding="utf-8") as file_handle:
         return json.load(file_handle)
 
 
