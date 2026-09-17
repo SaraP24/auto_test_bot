@@ -153,6 +153,70 @@ def build_prompt(context: dict[str, Any]) -> str:
     ).strip()
 
 
+def build_fallback_summary(context: dict[str, Any], reason: str) -> dict[str, Any]:
+    summary = context.get("summary", {})
+    failed = int(summary.get("failed", 0) or 0)
+    flaky = int(summary.get("flaky", 0) or 0)
+
+    if failed > 0:
+        headline = f"{failed} test run(s) failed. Using local fallback summary."
+        executive_summary = (
+            "The LLM provider was unavailable, so this report was generated locally from the test report. "
+            "There are failing test runs that should be triaged before release."
+        )
+    else:
+        headline = "All test runs passed. Using local fallback summary."
+        executive_summary = (
+            "The LLM provider was unavailable, so this report was generated locally from the test report. "
+            "No failed runs were detected in this execution."
+        )
+
+    top_risks: list[str] = []
+    if failed > 0:
+        top_risks.append(f"{failed} failing run(s) may block release confidence.")
+    if flaky > 0:
+        top_risks.append(f"{flaky} flaky run(s) indicate instability across retries.")
+
+    for finding in context.get("actionable_findings", [])[:2]:
+        suggestion = str(finding.get("suggestion") or "").strip()
+        if suggestion:
+            top_risks.append(suggestion)
+
+    if not top_risks:
+        top_risks.append("No critical risks were identified from deterministic parsing.")
+
+    next_actions = []
+    if failed > 0:
+        next_actions.append("Prioritize investigation of the first failing tests in the Playwright report.")
+    if flaky > 0:
+        next_actions.append("Stabilize flaky scenarios by improving waits and locator resilience.")
+    next_actions.append("Review stack traces in HTML report and apply the top suggested fixes.")
+    next_actions.append("Re-run CI after applying fixes to confirm regression closure.")
+
+    notable_failures = []
+    for failure in context.get("failures", [])[:3]:
+        errors = failure.get("errors") or []
+        probable_cause = str(errors[0]).strip() if errors else "Failure details not available in parsed error output"
+        notable_failures.append(
+            {
+                "title": failure.get("title", "Unknown test"),
+                "project": failure.get("project", "unknown"),
+                "probable_cause": probable_cause,
+                "suggested_fix": "Inspect trace/error output and harden selectors, waits, or test data setup.",
+            }
+        )
+
+    return {
+        "provider_status": "fallback",
+        "provider_error": reason,
+        "headline": headline,
+        "executive_summary": executive_summary,
+        "top_risks": top_risks[:3],
+        "next_actions": next_actions[:4],
+        "notable_failures": notable_failures,
+    }
+
+
 def strip_code_fences(text: str) -> str:
     stripped = text.strip()
     if stripped.startswith("```"):
@@ -324,7 +388,11 @@ def main() -> int:
     report_path = resolve_report_path(Path(args.report))
     report = json.loads(report_path.read_text(encoding="utf-8"))
     context = build_context(report)
-    llm_summary = call_llm(build_prompt(context))
+    try:
+        llm_summary = call_llm(build_prompt(context))
+    except RuntimeError as error:
+        print(f"[WARN] LLM summary request failed, using fallback: {error}", file=sys.stderr)
+        llm_summary = build_fallback_summary(context, str(error))
 
     markdown_output = render_markdown(llm_summary, context)
     json_output = json.dumps(
