@@ -10,6 +10,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   test:
@@ -95,6 +97,15 @@ jobs:
           name: readme-preview
           path: README.md
 
+      - name: Build Pages site
+        run: python ai/build_pages_report.py --report ci-artifacts/report.json --llm-summary reports/llm-summary.json --html-report-dir ci-artifacts/html --output-dir site
+
+      - name: Upload Pages artifact
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
       - name: Commit updated docs
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
@@ -107,3 +118,13 @@ jobs:
           fi
           git commit -m "docs: update test status [skip ci]"
           git push origin HEAD:${GITHUB_REF_NAME}
+
+  deploy-pages:
+    runs-on: ubuntu-latest
+    needs: ai-agent
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

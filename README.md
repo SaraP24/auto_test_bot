@@ -112,6 +112,8 @@ El workflow de GitHub Actions ejecuta Playwright en Ubuntu, publica `reports/htm
 
 Si configuras el secret `OPENAI_API_KEY`, el job `ai-agent` también genera `reports/llm-summary.md` y `reports/llm-summary.json`, y agrega un bloque de resumen LLM a este README.
 
+En pushes a `main`, el pipeline también publica un sitio estático en GitHub Pages con un dashboard simple, link al HTML report de Playwright y acceso al resumen LLM generado.
+
 <!-- TEST-STATUS:START -->
 ## CI Test Status
 

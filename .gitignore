@@ -5,12 +5,14 @@ node_modules/
 /playwright/.auth/
 venv
 .env
+__pycache__/
 *.png
 *.jpg
 *.jpeg
 /__pycache__/
 /report/
 /reports/
+/site/
 .playwright
 .playwright-mcp
 .claude
