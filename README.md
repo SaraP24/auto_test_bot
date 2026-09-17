@@ -117,8 +117,8 @@ Current status: **Passing**.
 
 | Metric | Value |
 | --- | ---: |
-| Total test runs | 14 |
-| Passed | 14 |
+| Total test runs | 10 |
+| Passed | 10 |
 | Failed | 0 |
 | Timed out | 0 |
 | Interrupted | 0 |
