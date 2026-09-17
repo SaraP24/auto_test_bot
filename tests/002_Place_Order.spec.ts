@@ -1,4 +1,4 @@
-import { test } from '../fixtures/page-manager';
+import { test } from '../fixtures/page-manager.ts';
 
     test('002 - Validate user can place an order', async ({ catalogFlow, checkoutFlow }) => {
         await test.step('Open the catalog and buy the first product', async () => {

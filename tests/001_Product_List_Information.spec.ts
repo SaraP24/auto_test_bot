@@ -1,4 +1,4 @@
-import { test } from '../fixtures/page-manager';
+import { test } from '../fixtures/page-manager.ts';
 
 test.describe('DemoBlaze Tests - Product List Information tests', () => {
     test('001 - Validate get product list information from first N pages', async ({ catalogFlow, assertionsUI }) => {

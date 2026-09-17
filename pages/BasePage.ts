@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import fs from 'fs';
-import {DEFAULT_TIMEOUT} from '../utils/Timeouts';
+import { DEFAULT_TIMEOUT } from '../utils/timeouts.ts';
 
 export class BasePage {
     protected page: Page;

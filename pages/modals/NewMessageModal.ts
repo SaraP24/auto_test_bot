@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { BasePage } from '../../pages/BasePage';
+import { BasePage } from '../../pages/BasePage.ts';
 
 export class NewMessageModal extends BasePage {
     readonly contactFormIdentifier: Locator = this.page.locator('#exampleModal .modal-content');

@@ -1,6 +1,6 @@
-import { CartPage } from '../pages/CartPage';
-import AssertionsUI from '../utils/AssertionsUI';
-import { CheckoutResult, CustomerDetails } from './domain-models';
+import { CartPage } from '../pages/CartPage.ts';
+import AssertionsUI from '../utils/AssertionsUI.ts';
+import { CheckoutResult, CustomerDetails } from './domain-models.ts';
 
 export type CheckoutFlowDependencies = {
     cartPage: CartPage;

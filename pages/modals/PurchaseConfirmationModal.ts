@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test";
-import { BasePage } from '../../pages/BasePage';
+import { BasePage } from '../../pages/BasePage.ts';
 
 export class PurchaseConfirmationModal extends BasePage {
     readonly modalIdentifier: Locator = this.page.locator('.sweet-alert');

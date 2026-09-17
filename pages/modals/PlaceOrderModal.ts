@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test";
-import { BasePage } from '../../pages/BasePage';
+import { BasePage } from '../../pages/BasePage.ts';
 
 export class PlaceOrderModal extends BasePage {
     readonly placeOrderFormIdentifier: Locator = this.page.locator('#orderModal .modal-content')

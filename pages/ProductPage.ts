@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
-import { SHORT_TIMEOUT } from '../utils/Timeouts';
-import { BasePage } from '../pages/BasePage';
+import { SHORT_TIMEOUT } from '../utils/timeouts.ts';
+import { BasePage } from '../pages/BasePage.ts';
 
 export class ProductPage extends BasePage {
     readonly pageIdentifier: Locator = this.page.locator('.product-content.product-deatil');

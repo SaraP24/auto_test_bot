@@ -1,5 +1,5 @@
-import { test } from '../fixtures/page-manager';
-import loginTestData from '../test_data/loginTestData';
+import { test } from '../fixtures/page-manager.ts';
+import loginTestData from '../test_data/loginTestData.ts';
 
 test.describe('DemoBlaze Tests - Login tests', () => {
     test('003.1 - Validate valid login', async ({ homePage, loginFlow, assertionsUI }, testInfo) => {

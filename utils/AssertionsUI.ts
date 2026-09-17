@@ -1,6 +1,6 @@
 import { Page, expect, Locator } from '@playwright/test';
-import { IAssertionOptions } from '../interfaces/IAssertionOptions';
-import { SHORT_TIMEOUT } from '../utils/Timeouts';
+import { IAssertionOptions } from '../interfaces/IAssertionOptions.ts';
+import { SHORT_TIMEOUT } from '../utils/timeouts.ts';
 
 export default class AssertionsUI {
     constructor(protected page: Page) { }

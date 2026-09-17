@@ -1,6 +1,6 @@
-import { HeaderPage } from '../pages/HeaderPage';
-import AssertionsUI from '../utils/AssertionsUI';
-import { LoginCredentials, LoginResult } from './domain-models';
+import { HeaderPage } from '../pages/HeaderPage.ts';
+import AssertionsUI from '../utils/AssertionsUI.ts';
+import { LoginCredentials, LoginResult } from './domain-models.ts';
 
 export type LoginFlowDependencies = {
     headerPage: HeaderPage;

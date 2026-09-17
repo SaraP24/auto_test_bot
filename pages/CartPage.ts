@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
-import { BasePage } from "./BasePage";
-import { PlaceOrderModal } from "./modals/PlaceOrderModal";
+import { BasePage } from "./BasePage.ts";
+import { PlaceOrderModal } from "./modals/PlaceOrderModal.ts";
 import { PurchaseConfirmationModal } from "./modals/PurchaseConfirmationModal"
 
 export class CartPage extends BasePage {

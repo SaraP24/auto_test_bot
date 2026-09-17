@@ -1,14 +1,14 @@
 import { test as base } from "@playwright/test";
-import { BasePage } from "../pages/BasePage";
-import { HeaderPage } from "../pages/HeaderPage";
-import { HomePage } from '../pages/HomePage';
-import { ProductPage } from '../pages/ProductPage';
-import { CartPage } from '../pages/CartPage';
-import AssertionsUI from "../utils/AssertionsUI";
-import { CatalogFlow } from '../flows/CatalogFlow';
-import { CheckoutFlow } from '../flows/CheckoutFlow';
-import { LoginFlow } from '../flows/LoginFlow';
-import { ContactFlow } from '../flows/ContactFlow';
+import { BasePage } from "../pages/BasePage.ts";
+import { HeaderPage } from "../pages/HeaderPage.ts";
+import { HomePage } from '../pages/HomePage.ts';
+import { ProductPage } from '../pages/ProductPage.ts';
+import { CartPage } from '../pages/CartPage.ts';
+import AssertionsUI from "../utils/AssertionsUI.ts";
+import { CatalogFlow } from '../flows/CatalogFlow.ts';
+import { CheckoutFlow } from '../flows/CheckoutFlow.ts';
+import { LoginFlow } from '../flows/LoginFlow.ts';
+import { ContactFlow } from '../flows/ContactFlow.ts';
 
 
 type Page_manager = {

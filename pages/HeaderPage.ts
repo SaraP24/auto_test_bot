@@ -1,7 +1,7 @@
 import { Page, Locator } from '@playwright/test';
-import { BasePage } from './BasePage';
-import { NewMessageModal } from './modals/NewMessageModal';
-import { LoginModal } from './modals/LoginModal';
+import { BasePage } from './BasePage.ts';
+import { NewMessageModal } from './modals/NewMessageModal.ts';
+import { LoginModal } from './modals/LoginModal.ts';
 
 
 export class HeaderPage extends BasePage {

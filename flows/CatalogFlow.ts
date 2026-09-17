@@ -1,8 +1,8 @@
-import { HomePage } from '../pages/HomePage';
-import { ProductPage } from '../pages/ProductPage';
-import { CartPage } from '../pages/CartPage';
-import AssertionsUI from '../utils/AssertionsUI';
-import { ProductSummary } from './domain-models';
+import { HomePage } from '../pages/HomePage.ts';
+import { ProductPage } from '../pages/ProductPage.ts';
+import { CartPage } from '../pages/CartPage.ts';
+import AssertionsUI from '../utils/AssertionsUI.ts';
+import { ProductSummary } from './domain-models.ts';
 
 export type CatalogFlowDependencies = {
     homePage: HomePage;

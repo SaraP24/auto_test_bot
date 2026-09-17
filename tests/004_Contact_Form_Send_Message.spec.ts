@@ -1,4 +1,4 @@
-import { test } from '../fixtures/page-manager';
+import { test } from '../fixtures/page-manager.ts';
 
 test('004 - Verify to send a message from Contact form modal', async ({ homePage, contactFlow, assertionsUI }) => {
     await test.step('Navigate to homepage and send a contact message', async () => {

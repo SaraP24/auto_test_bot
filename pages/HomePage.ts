@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
-import { BasePage } from '../pages/BasePage';
-import { IProductInformation } from '../interfaces/ui/IProductInformation';
+import { BasePage } from '../pages/BasePage.ts';
+import { IProductInformation } from '../interfaces/ui/IProductInformation.ts';
 
 export class HomePage extends BasePage {
     readonly productCard: Locator = this.page.locator('.card .card-block');

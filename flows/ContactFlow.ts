@@ -1,6 +1,6 @@
-import { HeaderPage } from '../pages/HeaderPage';
-import AssertionsUI from '../utils/AssertionsUI';
-import { ContactMessage, ContactResult } from './domain-models';
+import { HeaderPage } from '../pages/HeaderPage.ts';
+import AssertionsUI from '../utils/AssertionsUI.ts';
+import { ContactMessage, ContactResult } from './domain-models.ts';
 
 export type ContactFlowDependencies = {
     headerPage: HeaderPage;

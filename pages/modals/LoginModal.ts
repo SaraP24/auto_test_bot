@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { BasePage } from '../../pages/BasePage';
+import { BasePage } from '../../pages/BasePage.ts';
 
 export class LoginModal extends BasePage {
     readonly loginModalIdentifier: Locator = this.page.locator('#logInModal .modal-content');
