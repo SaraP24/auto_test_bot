@@ -106,6 +106,28 @@ También hay scripts npm que pueden ayudar (ver `package.json`):
 - `npm run activate-venv` (activa el venv, si está definido)
 - `npm run open-dashboard` (lanza la URL del dashboard)
 
+## CI/CD
+
+El workflow de GitHub Actions ejecuta Playwright en Ubuntu, publica `reports/html` como artefacto y actualiza este README a partir de `reports/report.json`.
+
+<!-- TEST-STATUS:START -->
+## CI Test Status
+
+Current status: **Passing**.
+
+| Metric | Value |
+| --- | ---: |
+| Total test runs | 14 |
+| Passed | 14 |
+| Failed | 0 |
+| Timed out | 0 |
+| Interrupted | 0 |
+| Skipped | 0 |
+| Flaky | 0 |
+
+This section is maintained automatically by the GitHub Actions pipeline from `reports/report.json`.
+<!-- TEST-STATUS:END -->
+
 ## 🧠 Detalles del Módulo de Self-Healing
 
 Flujo básico:

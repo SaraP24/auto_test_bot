@@ -1,0 +1,92 @@
+name: QA Automation Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - README.md
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        id: playwright
+        run: npm test
+        continue-on-error: true
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: reports
+          if-no-files-found: warn
+
+      - name: Fail job when tests fail
+        if: steps.playwright.outcome == 'failure'
+        run: exit 1
+
+  ai-agent:
+    runs-on: ubuntu-latest
+    needs: test
+    if: always()
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download Playwright results
+        uses: actions/download-artifact@v4
+        with:
+          name: playwright-results
+          path: ci-artifacts
+
+      - name: Update README test status
+        run: python ai/update_readme_test_status.py --report ci-artifacts/reports/report.json --readme README.md
+
+      - name: Upload README preview
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: readme-preview
+          path: README.md
+
+      - name: Commit updated docs
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.name "CI Bot"
+          git config --global user.email "sperezfru@gmail.com"
+          git add README.md
+          if git diff --cached --quiet; then
+            echo "No README changes to commit."
+            exit 0
+          fi
+          git commit -m "docs: update test status [skip ci]"
+          git push
